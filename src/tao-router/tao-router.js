@@ -6,7 +6,9 @@
 let Vue
 
 class VueRouter {
-
+    constructor($options) {
+        this.$
+    }
 }
 
 VueRouter.install = function(_Vue) {
@@ -25,4 +27,28 @@ VueRouter.install = function(_Vue) {
             }
         }
     })
+
+    // 注册实现 link view 组件
+    Vue.component('router-link', {
+        props: {
+            to: {
+                type: String,
+                require: true
+            }
+        },
+        render(h) {
+            // 创建 href 属性和使用插槽来渲染 a 标签内的值
+            return h('a', {attrs: {href: '#' + this.to}}, this.$slots.default)
+        }
+    })
+
+    Vue.component('router-view', {
+        render(h) {
+            // 获取当前路由对应的组件
+
+            return h(null)
+        }
+    })
 }
+
+export default VueRouter

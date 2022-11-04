@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VueRouter from 'tao-router'
+import VueRouter from './tao-router'
 import HomeView from '../views/HomeView.vue'
 
 // VueRouter 是一个插件

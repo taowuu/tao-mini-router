@@ -25,3 +25,6 @@
 
 ## 第三步
 - 注册实现 link view 组件
+- 引用自己的 tao-router
+- link 根据组件传入的值渲染
+- view 
