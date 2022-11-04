@@ -9,6 +9,7 @@
 
 ## 第一步初始化环境
 - `npm install`
+- `npm run serve`
 - 初始项目中我修改了以下
     - 新建 tao-router 存放我们自己的实现
     - mian 中引入我们自己的 tao-router
