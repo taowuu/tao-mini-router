@@ -6,8 +6,21 @@
 let Vue
 
 class VueRouter {
-    constructor($options) {
-        this.$
+    constructor(options) {
+        this.$options = options
+        // 响应化
+        // 将来变化 view render 能再次执行
+        // this.current = '/'
+        Vue.util.defineReactive(
+            this,
+            "current",
+            window.location.hash.slice(1) || "/"
+        )
+        // 监听 hash
+        window.addEventListener("hashchange", () => {
+            console.log('this current path', this.current)
+            this.current = window.location.hash.slice(1)
+        })
     }
 }
 
@@ -45,8 +58,13 @@ VueRouter.install = function(_Vue) {
     Vue.component('router-view', {
         render(h) {
             // 获取当前路由对应的组件
-
-            return h(null)
+            let component = null
+            // 去路由表找到当前组件对应的路由
+            const route = this.$router.$options.routes.find(route => route.path === this.$router.current)
+            if(route) {
+                component = route.component
+            }
+            return h(component)
         }
     })
 }
